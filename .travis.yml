@@ -21,7 +21,7 @@ script:
   - chmod u+x ./Scripts/build.sh
   - ./Scripts/build.sh
   - chmod u+x ./Scripts/upload_to_hockey.sh
-  - ./Scripts/upload_to_hockey.sh
+  #- ./Scripts/upload_to_hockey.sh
   
 notifications:
   email: false
