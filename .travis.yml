@@ -1,8 +1,16 @@
 language: objective-c
-osx_image: xcode61
+osx_image: xcode7.2
 rvm:
   - 2.1.2
 install:
+  - curl -o android-sdk.zip http://dl.google.com/android/android-sdk_r24.4.1-macosx.zip
+  - unzip android-sdk.zip
+  - export ANDROID_HOME=$PWD/android-sdk-macosx
+  - export PATH=$PATH:$ANDROID_HOME/tools
+  - export PATH=$PATH:$ANDROID_HOME/platform-tools
+  - export JAVA_HOME=$(/usr/libexec/java_home)
+  - echo "y" | android update sdk --no-ui --filter tool,platform-tool,android-23
+  - brew install ant
   - chmod u+x ./Scripts/install.sh
   - ./Scripts/install.sh
 script:
