@@ -19,7 +19,7 @@ script:
   - chmod u+x ./Scripts/upload_to_hockey.sh
   - export HOCKEY_API_TOKEN="3a10e2cca88c4273847eb4bba6957d7e"
   - export HOCKEY_APP_TOKEN="3d0a7658edb04b4493b903dbe1f449ac"
-  - export APP_PATH="/Build/android/ci-build.apk"
+  - export APP_PATH="$(pwd)/Build/android/$project.apk"
   - ./Scripts/upload_to_hockey.sh
   
 notifications:
