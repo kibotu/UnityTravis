@@ -3,23 +3,24 @@ osx_image: xcode7.2
 rvm:
   - 2.1.2
 install:
+
   - curl -o android-sdk.zip http://dl.google.com/android/android-sdk_r24.4.1-macosx.zip
   - unzip android-sdk.zip
   - export ANDROID_HOME=$PWD/android-sdk-macosx
   - export PATH=$PATH:$ANDROID_HOME/tools
   - export PATH=$PATH:$ANDROID_HOME/platform-tools
   - export JAVA_HOME=$(/usr/libexec/java_home)
+  - export project="ci-build"
+  - export HOCKEY_API_TOKEN="3a10e2cca88c4273847eb4bba6957d7e"
+  - export HOCKEY_APP_TOKEN="3d0a7658edb04b4493b903dbe1f449ac"
+  - export APP_PATH="$(pwd)/Build/android/$project.apk"
   - echo "y" | android update sdk --no-ui --filter tool,platform-tool,android-23
-  # - brew install ant
   - chmod u+x ./Scripts/install.sh
   - ./Scripts/install.sh
 script:
   - chmod u+x ./Scripts/build.sh
   - ./Scripts/build.sh
   - chmod u+x ./Scripts/upload_to_hockey.sh
-  - export HOCKEY_API_TOKEN="3a10e2cca88c4273847eb4bba6957d7e"
-  - export HOCKEY_APP_TOKEN="3d0a7658edb04b4493b903dbe1f449ac"
-  - export APP_PATH="$(pwd)/Build/android/$project.apk"
   - ./Scripts/upload_to_hockey.sh
   
 notifications:
